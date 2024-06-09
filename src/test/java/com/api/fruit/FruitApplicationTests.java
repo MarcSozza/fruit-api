@@ -106,7 +106,6 @@ class FruitApplicationTests {
      */
     @Test
     void updateFruit_send_null_if_not_custom_id_but_fruit_doesnt_exist_in_database() throws Exception {
-        Fruit fruit1 = new Fruit("1", "Apple", "Red", 100, 10, "Good", "apple.png");
         Fruit fruitByUser = new Fruit("Pineapple", "Orange", 15, 15, "bade", "pineapple.png");
         String idToFind = "15";
 
