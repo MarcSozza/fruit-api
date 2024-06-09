@@ -19,13 +19,21 @@ public class FruitService {
     }
 
     public Fruit addFruit(Fruit fruit) {
+        if (fruit.hasId()) {
+            throw new RuntimeException("Not Allowed to put a custom ID");
+        }
         return repo.save(fruit);
     }
 
-    public Fruit updateFruit(int id, Fruit fruit) {
-        Optional<Fruit> optionalFruit = repo.findById(String.valueOf(id));
+    public Fruit updateFruit(String id, Fruit fruit) {
 
-        if(optionalFruit.isPresent()) {
+        if (fruit.hasId()) {
+            throw new RuntimeException("Not Allowed to put a custom ID");
+        }
+
+        Optional<Fruit> optionalFruit = repo.findById(id);
+
+        if (optionalFruit.isPresent()) {
             Fruit updatedFruit = optionalFruit.get();
             updatedFruit.setName(fruit.getName());
             updatedFruit.setPrice(fruit.getPrice());
